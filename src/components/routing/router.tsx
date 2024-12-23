@@ -22,31 +22,7 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.INQUIRY_CREATE,
                 element: <InquiryCreate />
-            },
-            // {
-            //     path: ROUTES.VENDOR_EDIT(':id'),
-            //     element: <VendorUpdatePage />,
-            //     loader: vendorLoader,
-            //     HydrateFallback: Fallback,
-            // },
-            // {
-            //     path: ROUTES.VENDOR_DETAIL(':id'),
-            //     element: <VendorViewPage />,
-            //     loader: vendorLoader,
-            //     HydrateFallback: Fallback
-            // },
-            // {
-            //     path: ROUTES.CATEGORIES,
-            //     element: <p>Categories</p>
-            // },
-            // {
-            //     path: ROUTES.STORES,
-            //     element: <p>Stores</p>
-            // },
-            // {
-            //     path: ROUTES.PRODUCTS,
-            //     element: <p>Products</p>
-            // }
+            }
         ]
     }
 ]);
