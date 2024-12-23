@@ -1,0 +1,68 @@
+@use "./styles/layout.scss";
+@use "./styles/grid.scss";
+@use "./styles/align.scss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+label {
+  display: inline-block;
+}
+
+.showElement {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}

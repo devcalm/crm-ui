@@ -1,0 +1,31 @@
+@use 'sass:math';
+
+// Define the grid breakpoints
+$grid-breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Define the number of columns
+$grid-columns: 12;
+
+// Mixin to generate column classes
+@mixin generate-columns($breakpoint, $min-width) {
+  @for $i from 1 through $grid-columns {
+    .col-#{$breakpoint}-#{$i} {
+      @media (min-width: #{$min-width}) {
+        width: math.percentage(math.div($i, $grid-columns));
+        flex: 0 0 math.percentage(math.div($i, $grid-columns));
+        max-width: math.percentage(math.div($i, $grid-columns));
+      }
+    }
+  }
+}
+
+// Generate the grid system
+@each $breakpoint, $min-width in $grid-breakpoints {
+  @include generate-columns($breakpoint, $min-width);
+}

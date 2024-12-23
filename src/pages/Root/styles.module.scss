@@ -1,0 +1,11 @@
+.appWrapper {
+    display: flex;
+}
+
+.appMain {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #F5F6FA;
+}

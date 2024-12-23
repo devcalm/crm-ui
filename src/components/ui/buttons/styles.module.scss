@@ -1,0 +1,77 @@
+.btn {
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btnSuccess {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+
+  &:active {
+    background-color: #146c43;
+    border-color: #13653f;
+  }
+
+  &:focus {
+    background-color: #157347;
+    border-color: #146c43;
+    box-shadow: 0 0 0 0.25rem rgba(60, 153, 110, 0.5);
+  }
+}
+
+.btnPrimary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+
+  &:active {
+    background-color: #0a58ca;
+    border-color: #0a53be;
+  }
+
+  &:focus {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: 0 0 0 0.15rem rgba(49, 132, 253, 0.5);
+  }
+}
+
+.btnDanger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+
+  &:active {
+    background-color: #b02a37;
+    border-color: #a52834;
+  }
+
+  &:focus {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+    box-shadow: 0 0 0 0.15rem rgba(225, 83, 97, 0.5);
+  }
+}
+
+.btnSecondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+
+  &:active {
+    background-color: #565e64;
+    border-color: #51585e;
+  }
+
+  &:focus {
+    background-color: #5c636a;
+    border-color: #565e64;
+    box-shadow: 0 0 0 0.15rem rgba(130, 138, 145, 0.5);
+  }
+}

@@ -1,0 +1,20 @@
+@use "sass:math";
+
+$margin-directions: (
+  t: top,
+  b: bottom,
+  l: left,
+  r: right,
+);
+
+@mixin generate-margin-classes($start, $end, $step, $unit: rem) {
+  @each $key, $value in $margin-directions {
+    @for $i from $start through $end {
+      .m#{$key}-#{$i} {
+        margin-#{$value}: #{($i * $step)}#{$unit};
+      }
+    }
+  }
+}
+
+@include generate-margin-classes(1, 8, 0.25);
