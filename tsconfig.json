@@ -29,6 +29,15 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@axios/*": [
+        "src/api/axios/*"
+      ],
+      "@redux/*": [
+        "src/store/redux/*"
+      ],
+      "@config": [
+        "src/config.ts"
+      ],
     }
   }
 }

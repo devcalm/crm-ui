@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import InputGroup from "@ui/forms/input-group/InputGroup";
 import Form from "@ui/forms/form/Form";
 import Button from "@ui/buttons/Button";
+import ProductFilterSelect from "@components/filtering/ProductSearchSelect";
 
 interface FormValues {
     name: string;
@@ -67,6 +68,7 @@ export default function InquiryForm() {
             />
 
             <Button type="submit" className="btnSuccess mt-5">Create</Button>
+            <ProductFilterSelect />
         </Form>
     );
 }

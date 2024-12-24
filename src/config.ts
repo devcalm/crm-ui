@@ -1,5 +1,5 @@
 export const LOCAL_CONFIG = {
-    serverURL: "http://localhost:8080/api"
+    productServerURL: "http://localhost:3000/api"
 };
 
 const config = LOCAL_CONFIG;

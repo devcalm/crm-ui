@@ -15,6 +15,9 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@ui': path.resolve(__dirname, 'src/components/ui'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@axios': path.resolve(__dirname, 'src/api/axios'),
+      '@redux': path.resolve(__dirname, 'src/store/redux'),
+      '@config': path.resolve(__dirname, 'src/config.ts'),
     },
   },
 });
