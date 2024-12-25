@@ -18,6 +18,7 @@ export default defineConfig({
       '@axios': path.resolve(__dirname, 'src/api/axios'),
       '@redux': path.resolve(__dirname, 'src/store/redux'),
       '@config': path.resolve(__dirname, 'src/config.ts'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
     },
   },
 });

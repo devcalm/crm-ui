@@ -1,5 +1,5 @@
 import PageContent from "@components/content/PageContent";
-import InquiryForm from "../../pages/Inquiry/InquiryForm";
+import InquiryForm from "./InquiryCreateForm";
 
 export default function InquiryCreate() {
 

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import css from "./styles.module.scss";
+import css from "@ui/forms/form.module.scss";
 import cn from "classnames";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
