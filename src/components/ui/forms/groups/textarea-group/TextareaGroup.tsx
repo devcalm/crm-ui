@@ -12,7 +12,7 @@ interface TextareaGroupProps extends React.TextareaHTMLAttributes<HTMLTextAreaEl
 const TextareaGroup = forwardRef<HTMLTextAreaElement, TextareaGroupProps>(
     ({ name, label, validationState = {}, ...props }, ref) => {
 
-        const validation = useValidationState(validationState)
+        const validation = useValidationState(validationState);
 
         return (
             <div className="col mt-2">

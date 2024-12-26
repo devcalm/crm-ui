@@ -19,6 +19,7 @@ export default defineConfig({
       '@redux': path.resolve(__dirname, 'src/store/redux'),
       '@config': path.resolve(__dirname, 'src/config.ts'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@errors': path.resolve(__dirname, 'src/errors'),
     },
   },
 });

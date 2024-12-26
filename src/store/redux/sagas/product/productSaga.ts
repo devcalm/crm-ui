@@ -1,11 +1,12 @@
 import { call, put, debounce } from 'redux-saga/effects';
-import { ApiResponse as ProductNameFilterResponse } from "@redux/reducers/product/productNameFilterSlice";
+import { Product as ProductNameFilter } from "@redux/reducers/product/productNameFilterSlice";
 import { searchByName } from "./productApiCall";
 import {
     fetchProductsByNameStart,
     fetchProductsByNameSuccess,
     fetchProductsByNameError
 } from '@redux/reducers/product/productNameFilterSlice';
+import { HttpError } from '@errors/HttpError';
 
 interface FilterProductsByNameAction {
     type: string,
@@ -14,10 +15,13 @@ interface FilterProductsByNameAction {
 
 function* filterProductsByName(action: FilterProductsByNameAction) {
     try {
-        const response: ProductNameFilterResponse = yield call(searchByName, action.payload);
-        yield put(fetchProductsByNameSuccess(response.data));
-    } catch (error: any) {
-        yield put(fetchProductsByNameError(error.message || 'Something went wrong'));
+        const response: ProductNameFilter[] = yield call(searchByName, action.payload);
+        yield put(fetchProductsByNameSuccess(response));
+    } catch (error: unknown) {
+        const errorMessage = HttpError.isInstance(error)
+            ? error.errorDetail
+            : 'Unknown error';
+        yield put(fetchProductsByNameError(errorMessage));
     }
 }
 

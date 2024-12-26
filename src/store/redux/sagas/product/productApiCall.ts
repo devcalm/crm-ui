@@ -1,17 +1,15 @@
 import { axiosProduct, isAxiosResponse } from "@axios/apiClient";
-import { ApiResponse as ProductNameFilterResponse } from "@redux/reducers/product/productNameFilterSlice";
+import { Product as ProductNameFilter } from "@redux/reducers/product/productNameFilterSlice";
 import API from "@axios/apiRoutes";
 
-export const searchByName = async (name: string): Promise<ProductNameFilterResponse> => {
+export const searchByName = async (name: string): Promise<ProductNameFilter[]> => {
     const res = await axiosProduct.request({
         method: 'get',
         url: API.PRODUCT_SEARCH,
         params: { name }
     });
     if (isAxiosResponse(res)) {
-        return {
-            data: res.data
-        };
+        return res.data;
     }
-    throw new Error(res.message);
+    throw Error("Incorrect response");
 };

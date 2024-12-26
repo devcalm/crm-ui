@@ -8,6 +8,10 @@ export interface ValidationResponse {
     errorMessage?: string
 }
 
+export function createError(message: string): ValidationResponse { 
+    return { type: 'error', errorMessage: message }
+}
+
 export default function useValidationState(validationState: ValidationState = {}): ValidationResponse {
     const { error, wasValidating } = validationState;
 

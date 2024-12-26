@@ -11,7 +11,17 @@ const productApiClient: AxiosRequestConfig = {
     }
 };
 
+const customerApiClient: AxiosRequestConfig = {
+    baseURL: config.customerServerURL,
+    responseType: "json",
+    timeout: 10000,
+    headers: {
+        "Content-Type": "application/json",
+    }
+};
+
 export const axiosProduct = new AxiosCreator(productApiClient);
+export const axiosCustomer = new AxiosCreator(customerApiClient);
 
 export function isAxiosResponse(res: AxiosResponse | AxiosError): res is AxiosResponse {
     return (res as AxiosResponse).data != undefined;

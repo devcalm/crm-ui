@@ -1,42 +1,41 @@
 import { createError, ValidationResponse } from '@hooks/validation/useValidationState';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface Product {
+export interface Customer {
     guid: string,
     name: string
 }
 
-interface ProductState {
-    products: Product[],
+interface CustomerState {
+    customers: Customer[],
     loading: boolean,
     error?: ValidationResponse;
 }
 
-const initialState: ProductState = {
-    products: [],
+const initialState: CustomerState = {
+    customers: [],
     loading: false,
     error: undefined
 };
 
 const productSlice = createSlice({
-    name: 'productNameFilter',
+    name: 'customerNameFilter',
     initialState,
     reducers: {
-        fetchProductsByNameStart: (state, action: PayloadAction<string>) => {
+        fetchCustomersByNameStart: (state, action: PayloadAction<string>) => {
             state.loading = true;
             state.error = undefined;
         },
-        fetchProductsByNameSuccess: (state, action: PayloadAction<Product[]>) => {
+        fetchCustomersByNameSuccess: (state, action: PayloadAction<Customer[]>) => {
             state.loading = false;
-            state.products = action.payload;
+            state.customers = action.payload;
         },
-        fetchProductsByNameError: (state, action: PayloadAction<string>) => {
+        fetchCustomersByNameError: (state, action: PayloadAction<string>) => {
             state.loading = false;
             state.error = createError(action.payload);
         }
     }
 });
 
-
-export const { fetchProductsByNameStart, fetchProductsByNameSuccess, fetchProductsByNameError } = productSlice.actions;
+export const { fetchCustomersByNameStart, fetchCustomersByNameSuccess, fetchCustomersByNameError } = productSlice.actions;
 export default productSlice.reducer;

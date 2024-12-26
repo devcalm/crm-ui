@@ -4,6 +4,8 @@ import Form from "@ui/forms/form/Form";
 import Button from "@ui/buttons/Button";
 import SelectGroup from "@ui/forms/groups/select-group/SelectGroup";
 import TextareaGroup from "@ui/forms/groups/textarea-group/TextareaGroup";
+import useProductNameFilter from "@hooks/saga/product/useProductNameFilter";
+import useCustomerNameFilter from "@hooks/saga/customer/useCustomerNameFilter";
 
 interface FormValues {
     source: string;
@@ -60,6 +62,7 @@ export default function InquiryForm() {
                 render={({ field, fieldState }) => (
                     <SelectGroup
                         {...field}
+                        useSelectNameFilter = {useProductNameFilter}
                         validationState={{
                             error: fieldState.error?.message,
                             wasValidating: fieldState.isTouched || isSubmitted || Boolean(field.value),
@@ -75,7 +78,7 @@ export default function InquiryForm() {
                 )}
             />
 
-            <Controller
+            {/* <Controller
                 name="managerRefId"
                 control={control}
                 defaultValue=""
@@ -98,7 +101,7 @@ export default function InquiryForm() {
                         placeholder="Select a manager"
                     />
                 )}
-            />
+            /> */}
 
             <Controller
                 name="customerRefId"
@@ -110,6 +113,7 @@ export default function InquiryForm() {
                 render={({ field, fieldState }) => (
                     <SelectGroup
                         {...field}
+                        useSelectNameFilter = {useCustomerNameFilter}
                         validationState={{
                             error: fieldState.error?.message,
                             wasValidating: fieldState.isTouched || isSubmitted || Boolean(field.value),

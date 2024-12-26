@@ -4,18 +4,22 @@ import Label, { printHumanReadableLabel } from "../../label/Label";
 import ErrorMessage from "../../error-message/ErrorMessage";
 import useValidationState, { ValidationState } from "@hooks/validation/useValidationState";
 import customStyles from "./selectStyles";
-import useProductNameFilter from "@hooks/saga/product/useProductNameFilter";
+import { SelectResponse } from "@hooks/saga/response/SelectResponse";
 
 interface SelectGroupProps extends SelectProps {
     validationState?: ValidationState;
     label?: string;
+    useSelectNameFilter: () => SelectResponse
 }
 
 const SelectGroup = forwardRef<any, SelectGroupProps>(
-    ({ name, label, validationState = {}, ...props }, ref) => {
+    ({ name, label, useSelectNameFilter, validationState = {}, ...props }, ref) => {
 
-        const validation = useValidationState(validationState)
-        const { options, loading, handleInputChange } = useProductNameFilter();
+        const clientValidation = useValidationState(validationState);
+        const { options, error: serverValidation, loading, handleInputChange } = useSelectNameFilter();
+
+        const validation = serverValidation || clientValidation;
+        const errorMessage = serverValidation?.errorMessage || clientValidation.errorMessage;
 
         return (
             <div className="col mt-2">
@@ -30,11 +34,10 @@ const SelectGroup = forwardRef<any, SelectGroupProps>(
                     options={options}
                     onInputChange={handleInputChange}
                     styles={customStyles(validation)}
-                    placeholder="Search for a product..."
                     isClearable
                     {...props}
                 />
-                <ErrorMessage error={validation.errorMessage} />
+                <ErrorMessage error={errorMessage} />
             </div>
         );
     }

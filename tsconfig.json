@@ -38,6 +38,9 @@
       "@redux/*": [
         "src/store/redux/*"
       ],
+      "@errors/*": [
+        "src/errors/*"
+      ],
       "@config": [
         "src/config.ts"
       ],

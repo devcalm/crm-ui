@@ -3,22 +3,22 @@ import { RootState } from '@redux/store';
 import Option from "@ui/forms/groups/select-group/Option";
 import { useCallback } from "react";
 import { InputActionMeta } from "react-select";
-import { fetchProductsByNameStart } from "@redux/reducers/product/productNameFilterSlice";
+import { fetchCustomersByNameStart } from "@redux/reducers/customer/customerNameFilterSlice";
 import { SelectResponse } from "@hooks/saga/response/SelectResponse";
 
-const useProductNameFilter = (): SelectResponse => {
+const useCustomerNameFilter = (): SelectResponse => {
     const dispatch = useDispatch();
-    const { products, error, loading } = useSelector((state: RootState) => state.productNameFilterReducer);
+    const { customers, error, loading } = useSelector((state: RootState) => state.customerNameFilterReducer);
 
-    const options: Option[] = products.map((product) => ({
-        value: product.guid,
-        label: product.name
+    const options: Option[] = customers.map((customer) => ({
+        value: customer.guid,
+        label: customer.name
     }));
 
     const handleInputChange = useCallback(
         (inputValue: string, { action }: InputActionMeta) => {
             if (action === 'input-change' && inputValue.trim().length > 2) {
-                dispatch(fetchProductsByNameStart(inputValue));
+                dispatch(fetchCustomersByNameStart(inputValue));
             }
         },
         [dispatch]
@@ -27,4 +27,4 @@ const useProductNameFilter = (): SelectResponse => {
     return { options, handleInputChange, error, loading };
 }
 
-export default useProductNameFilter;
+export default useCustomerNameFilter;
