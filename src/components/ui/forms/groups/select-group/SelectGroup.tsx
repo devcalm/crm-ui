@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import Select, { Props as SelectProps } from "react-select";
-import Label, { printHumanReadableLabel } from "../../label/Label";
-import ErrorMessage from "../../error-message/ErrorMessage";
+import Label, { printHumanReadableLabel } from "@ui/forms/label/Label";
+import ErrorMessage from "@ui/forms/error-message/ErrorMessage";
 import useValidationState, { ValidationState } from "@hooks/validation/useValidationState";
 import customStyles from "./selectStyles";
 import { SelectResponse } from "@hooks/saga/response/SelectResponse";
