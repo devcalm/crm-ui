@@ -7,26 +7,22 @@ import TextareaGroup from "@ui/forms/groups/textarea-group/TextareaGroup";
 import useProductNameFilter from "@hooks/saga/product/useProductNameFilter";
 import useCustomerNameFilter from "@hooks/saga/customer/useCustomerNameFilter";
 import useManagerNameFilter from "@hooks/saga/manager/useManagerNameFilter";
-
-interface FormValues {
-    source: string;
-    productRefId: string;
-    managerRefId: string;
-    customerRefId: string;
-    comment: string;
-    note: string;
-}
+import { InquiryCreateFormData } from "@models/form-data/inquiryFormData";
+import useCreateInquiry from "@hooks/saga/inquiry/useCreateInquiry";
 
 export default function InquiryForm() {
     const {
         control,
         handleSubmit,
         formState: { isSubmitted },
-    } = useForm<FormValues>({
+    } = useForm<InquiryCreateFormData>({
         mode: "onBlur",
     });
 
-    const onSubmit = (data: FormValues) => {
+    const { handleSubmit: createInquiry } = useCreateInquiry();
+
+    const onSubmit = (data: InquiryCreateFormData) => {
+        createInquiry(data);
         console.log("Submitted Data: ", data);
     };
 
@@ -56,7 +52,7 @@ export default function InquiryForm() {
             <Controller
                 name="productRefId"
                 control={control}
-                defaultValue=""
+                defaultValue={undefined}
                 rules={{
                     required: "Product is required"
                 }}
@@ -82,7 +78,7 @@ export default function InquiryForm() {
             <Controller
                 name="managerRefId"
                 control={control}
-                defaultValue=""
+                defaultValue={undefined}
                 rules={{
                     required: "Manager is required"
                 }}
@@ -108,7 +104,7 @@ export default function InquiryForm() {
             <Controller
                 name="customerRefId"
                 control={control}
-                defaultValue=""
+                defaultValue={undefined}
                 rules={{
                     required: "Customer is required"
                 }}
@@ -134,7 +130,7 @@ export default function InquiryForm() {
             <Controller
                 name="comment"
                 control={control}
-                defaultValue=""
+                defaultValue={undefined}
                 render={({ field }) => (
                     <TextareaGroup
                         {...field}
@@ -146,7 +142,7 @@ export default function InquiryForm() {
             <Controller
                 name="note"
                 control={control}
-                defaultValue=""
+                defaultValue={undefined}
                 render={({ field }) => (
                     <TextareaGroup
                         {...field}

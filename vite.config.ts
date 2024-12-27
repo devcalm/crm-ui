@@ -20,6 +20,7 @@ export default defineConfig({
       '@config': path.resolve(__dirname, 'src/config.ts'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@errors': path.resolve(__dirname, 'src/errors'),
+      '@models': path.resolve(__dirname, 'src/models'),
     },
   },
 });

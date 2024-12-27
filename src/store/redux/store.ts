@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import productNameFilterReducer from "@redux/reducers/product/productNameFilterSlice";
 import customerNameFilterReducer from "@redux/reducers/customer/customerNameFilterSlice";
 import managerNameFilterReducer from "@redux/reducers/manager/managerNameFilterSlice";
+import inquiryCreateReducer from "@redux/reducers/inquiry/inquiryCreateSlice";
 import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -11,7 +12,8 @@ const store = configureStore({
     reducer: {
         productNameFilterReducer,
         customerNameFilterReducer,
-        managerNameFilterReducer
+        managerNameFilterReducer,
+        inquiryCreateReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),

@@ -29,6 +29,16 @@ const managerApiClient: AxiosRequestConfig = {
     }
 };
 
+const inquiryApiClient: AxiosRequestConfig = {
+    baseURL: config.inquiryServerURL,
+    responseType: "json",
+    timeout: 10000,
+    headers: {
+        "Content-Type": "application/json",
+    }
+};
+
 export const axiosProduct = new AxiosCreator(productApiClient);
 export const axiosCustomer = new AxiosCreator(customerApiClient);
 export const axiosManager = new AxiosCreator(managerApiClient);
+export const axiosInquiry = new AxiosCreator(inquiryApiClient);
