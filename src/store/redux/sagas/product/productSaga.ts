@@ -1,6 +1,6 @@
 import { call, put, debounce } from 'redux-saga/effects';
 import { Product as ProductNameFilter } from "@redux/reducers/product/productNameFilterSlice";
-import { searchByName } from "./productApiCall";
+import { searchByName } from "./productApi";
 import {
     fetchProductsByNameStart,
     fetchProductsByNameSuccess,

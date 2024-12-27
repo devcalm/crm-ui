@@ -1,6 +1,6 @@
 import { call, put, debounce } from 'redux-saga/effects';
 import { Customer as CustomerNameFilter } from "@redux/reducers/customer/customerNameFilterSlice";
-import { searchByName } from "./customerApiCall";
+import { searchByName } from "./customerApi";
 import {
     fetchCustomersByNameStart,
     fetchCustomersByNameSuccess,

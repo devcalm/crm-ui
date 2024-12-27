@@ -1,8 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 import reponseErrorHandler from "./responseErrorHanlder";
 
-type AxiosResCustomType = AxiosResponse | AxiosError;
-
 export default class AxiosCreator {
     private readonly axios: AxiosInstance;
 
@@ -17,7 +15,7 @@ export default class AxiosCreator {
             (error: AxiosError) => reponseErrorHandler(error));
     }
 
-    async request(config: AxiosRequestConfig): Promise<AxiosResCustomType> {
-        return this.axios.request<any, AxiosResCustomType>(config);
+    async request(config: AxiosRequestConfig): Promise<AxiosResponse> {
+        return this.axios.request<any, AxiosResponse>(config);
     }
 };
