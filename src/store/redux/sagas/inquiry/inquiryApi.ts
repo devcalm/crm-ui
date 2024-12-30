@@ -8,7 +8,5 @@ export const createInquiry = async (dto: CreateInquiryDto): Promise<number> =>
         method: 'post',
         url: API.INQUIRY,
         data: JSON.stringify(dto)
-    }).then(result => extractInquiryIdFromLocaltionHeader(result.headers));
-
-
+    }).then(result => extractInquiryIdFromLocaltionHeader(result.headers['location']));
 

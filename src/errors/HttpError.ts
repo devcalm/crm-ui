@@ -1,6 +1,6 @@
 export class HttpError extends Error {
-    private readonly status: number;
-    private readonly detail: string;
+    protected readonly status: number;
+    protected readonly detail: string;
 
     constructor(status: number, detail: string) {
         super(detail);

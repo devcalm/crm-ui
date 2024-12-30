@@ -1,18 +1,17 @@
+import { BackendError } from "@models/dto/BackendError";
 import { CreateInquiryDto } from "@models/dto/inquiryDto";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface CreateInquiryState {
     loading: boolean,
     inquiryId: number
-    error?: string,
-    errors?: any[]
+    error?: BackendError
 }
 
 const initialState: CreateInquiryState  = {
     loading: false,
     inquiryId: 0,
     error: undefined,
-    errors: undefined
 };
 
 const slice = createSlice({
@@ -26,7 +25,7 @@ const slice = createSlice({
             state.inquiryId = action.payload;
             state.loading = false;
         },
-        createInquiryError: (state, action: PayloadAction<string>) => {
+        createInquiryError: (state, action: PayloadAction<BackendError>) => {
             state.loading = false;
             state.error = action.payload;
         }

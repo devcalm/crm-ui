@@ -1,8 +1,8 @@
 export const LOCAL_CONFIG = {
-    productServerURL: "http://localhost:3000/api",
-    customerServerURL: "http://localhost:3000/api",
-    managerServerURL: "http://localhost:3000/api",
-    inquiryServerURL: "http://localhost:8080/api"
+    productServerURL: "http://localhost:8080/api",
+    customerServerURL: "http://localhost:8080/api",
+    managerServerURL: "http://localhost:8080/api",
+    inquiryServerURL: "http://localhost:8081/api"
 };
 
 const config = LOCAL_CONFIG;

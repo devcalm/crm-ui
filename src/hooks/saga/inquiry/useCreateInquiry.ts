@@ -6,11 +6,12 @@ import { InquiryCreateFormData } from "src/models/form-data/inquiryFormData";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "@components/routing/routes";
 import { toCreateInquiryDto } from "@models/converter/inquiryConverter";
+import { BackendError } from "@models/dto/BackendError";
 
 interface InquiryCreateRespose {
     loading: boolean,
     inquiryId: number,
-    error?: string,
+    error?: BackendError,
     handleSubmit: (formData: InquiryCreateFormData) => void
 }
 
@@ -31,7 +32,6 @@ const useCreateInquiry = (): InquiryCreateRespose => {
         },
         [dispatch]
     );
-
 
     return { loading, inquiryId, error, handleSubmit };
 };

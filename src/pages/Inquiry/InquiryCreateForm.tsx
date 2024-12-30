@@ -9,25 +9,31 @@ import useCustomerNameFilter from "@hooks/saga/customer/useCustomerNameFilter";
 import useManagerNameFilter from "@hooks/saga/manager/useManagerNameFilter";
 import { InquiryCreateFormData } from "@models/form-data/inquiryFormData";
 import useCreateInquiry from "@hooks/saga/inquiry/useCreateInquiry";
+import ErrorMessage from "@ui/forms/error-message/ErrorMessage";
+import { useBackendErrors } from "@hooks/validation/useBackendErrors";
 
 export default function InquiryForm() {
     const {
         control,
         handleSubmit,
+        setError,
         formState: { isSubmitted },
     } = useForm<InquiryCreateFormData>({
         mode: "onBlur",
     });
 
-    const { handleSubmit: createInquiry } = useCreateInquiry();
+    const { handleSubmit: createInquiry, error, loading } = useCreateInquiry();
+    const errorMessage = useBackendErrors<InquiryCreateFormData>(error, setError);
 
     const onSubmit = (data: InquiryCreateFormData) => {
-        createInquiry(data);
-        console.log("Submitted Data: ", data);
+        if (!loading) {
+            createInquiry(data);
+        }
     };
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
+            <ErrorMessage error={errorMessage} />
             <Controller
                 name="source"
                 control={control}
@@ -59,7 +65,7 @@ export default function InquiryForm() {
                 render={({ field, fieldState }) => (
                     <SelectGroup
                         {...field}
-                        useSelectNameFilter = {useProductNameFilter}
+                        useSelectNameFilter={useProductNameFilter}
                         validationState={{
                             error: fieldState.error?.message,
                             wasValidating: fieldState.isTouched || isSubmitted || Boolean(field.value),
@@ -111,7 +117,7 @@ export default function InquiryForm() {
                 render={({ field, fieldState }) => (
                     <SelectGroup
                         {...field}
-                        useSelectNameFilter = {useCustomerNameFilter}
+                        useSelectNameFilter={useCustomerNameFilter}
                         validationState={{
                             error: fieldState.error?.message,
                             wasValidating: fieldState.isTouched || isSubmitted || Boolean(field.value),
@@ -151,8 +157,9 @@ export default function InquiryForm() {
                 )}
             />
 
-            <Button type="submit" className="btnSuccess mt-5">Create</Button>
-
+            <Button type="submit" className="btnSuccess mt-5" disabled={loading}>
+                {loading ? "Submitting..." : "Create"}
+            </Button>
         </Form>
     );
 }

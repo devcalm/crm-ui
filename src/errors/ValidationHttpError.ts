@@ -8,4 +8,19 @@ export class ValidationHttpError extends HttpError {
         this.errors = errors;
     }
 
+    static isInstance(error: unknown): error is ValidationHttpError {
+        return error instanceof ValidationHttpError;
+    }
+
+    get httpStatus(): number {
+        return this.status;
+    }
+
+    get errorDetail(): string {
+        return this.detail;
+    }
+
+    get errorsDetails(): Record<string, string> {
+        return this.errors;
+    }
 }
