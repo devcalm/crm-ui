@@ -10,10 +10,11 @@
   ],
   "compilerOptions": {
     "types": [
-      "node"
+      "vitest"
     ],
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "@pages/*": [
         "src/pages/*"
       ],

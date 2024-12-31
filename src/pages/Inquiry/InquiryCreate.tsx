@@ -1,11 +1,11 @@
 import PageContent from "@components/content/PageContent";
-import InquiryForm from "./InquiryCreateForm";
+import InquiryCreateForm from "./InquiryCreateForm";
 
 export default function InquiryCreate() {
 
     return (
         <PageContent title="Create new Inquiry">  
-            <InquiryForm />
+            <InquiryCreateForm />
         </PageContent>
     );
 

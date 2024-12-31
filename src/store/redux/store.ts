@@ -4,6 +4,7 @@ import productNameFilterReducer from "@redux/reducers/product/productNameFilterS
 import customerNameFilterReducer from "@redux/reducers/customer/customerNameFilterSlice";
 import managerNameFilterReducer from "@redux/reducers/manager/managerNameFilterSlice";
 import inquiryCreateReducer from "@redux/reducers/inquiry/inquiryCreateSlice";
+import inquiryViewReducer from "@redux/reducers/inquiry/InquiryViewSlice";
 import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -13,7 +14,8 @@ const store = configureStore({
         productNameFilterReducer,
         customerNameFilterReducer,
         managerNameFilterReducer,
-        inquiryCreateReducer
+        inquiryCreateReducer,
+        inquiryViewReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),

@@ -12,7 +12,7 @@ import useCreateInquiry from "@hooks/saga/inquiry/useCreateInquiry";
 import ErrorMessage from "@ui/forms/error-message/ErrorMessage";
 import { useBackendErrors } from "@hooks/validation/useBackendErrors";
 
-export default function InquiryForm() {
+export default function InquiryCreateForm() {
     const {
         control,
         handleSubmit,

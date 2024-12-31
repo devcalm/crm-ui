@@ -6,8 +6,10 @@ import RootLayout from "@pages/Root/RootLayout";
 import {Fallback} from "./fallback";
 import InquiryCreate from "@pages/Inquiry/InquiryCreate";
 import InquiryViewPage from "@pages/Inquiry/InquiryViewPage";
+import { inquiryLoader } from "./loaders";
 
-let Inqueries = React.lazy(() => import("@pages/Inquiry/InquiryListing"));
+let Inquires = React.lazy(() => import("@pages/Inquiry/InquiryListing"));
+let Inquiry = React.lazy(() => import("@pages/Inquiry/InquiryUpdate"));
 
 const router = createBrowserRouter([
     {
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
             { index: true, element: <HomePage /> },
             {
                 path: ROUTES.INQUIRIES,
-                element: <Inqueries />,
+                element: <Inquires />,
                 HydrateFallback: Fallback
             },
             {
@@ -27,6 +29,12 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.INQUIRY_DETAIL(':id'),
                 element: <InquiryViewPage />
+            },
+            {
+                path: ROUTES.INQUIRY_EDIT(':id'),
+                element: <Inquiry />,
+                loader: inquiryLoader,
+                HydrateFallback: Fallback
             }
         ]
     }

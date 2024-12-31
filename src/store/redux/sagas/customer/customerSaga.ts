@@ -13,7 +13,7 @@ interface FilterCustomersByNameAction {
     payload: string
 }
 
-function* filterCustomersByName(action: FilterCustomersByNameAction) {
+export function* filterCustomersByName(action: FilterCustomersByNameAction) {
     try {
         const response: CustomerNameFilter[] = yield call(searchByName, action.payload);
         yield put(fetchCustomersByNameSuccess(response));

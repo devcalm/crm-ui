@@ -1,9 +1,13 @@
-import { defineConfig } from 'vite'
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
+import { defineConfig as defineViteConfig, mergeConfig } from 'vite';
+import { defineConfig as defineVitestConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react'
 import svgr from "vite-plugin-svgr";
 import path from 'path';
 
-export default defineConfig({
+const viteConfig = defineViteConfig({
   plugins: [
     svgr(),
     react()
@@ -24,3 +28,23 @@ export default defineConfig({
     },
   },
 });
+
+const vitestConfig = defineVitestConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/vitest.setup.ts'],
+    css: {
+      modules: {
+        classNameStrategy: 'non-scoped'
+      }
+    },
+    testTimeout: 5000,
+    reporters: ['verbose'],
+    coverage: {
+      reporter: ["text", "lcov", 'json', 'html']
+    },
+  },
+});
+
+export default mergeConfig(viteConfig, vitestConfig);
