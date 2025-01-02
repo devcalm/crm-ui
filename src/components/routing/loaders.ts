@@ -1,4 +1,4 @@
-import { InquiryDto } from "@/models/dto/inquiryDto";
+import { InquiryDto } from "@models/dto/inquiryDto";
 import { axiosInquiry } from "@axios/apiClient";
 import API from "@axios/apiRoutes";
 import { LoaderFunctionArgs } from "react-router-dom";

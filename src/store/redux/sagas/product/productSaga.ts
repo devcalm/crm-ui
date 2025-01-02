@@ -7,13 +7,9 @@ import {
     fetchProductsByNameError
 } from '@redux/reducers/product/productNameFilterSlice';
 import { HttpError } from '@errors/HttpError';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface FilterProductsByNameAction {
-    type: string,
-    payload: string
-}
-
-function* filterProductsByName(action: FilterProductsByNameAction) {
+function* filterProductsByName(action: PayloadAction<string>) {
     try {
         const response: ProductNameFilter[] = yield call(searchByName, action.payload);
         yield put(fetchProductsByNameSuccess(response));

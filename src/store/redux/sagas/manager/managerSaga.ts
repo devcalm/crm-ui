@@ -1,19 +1,11 @@
 import { call, put, debounce } from 'redux-saga/effects';
 import { Manager as ManagerNameFilter } from "@redux/reducers/manager/managerNameFilterSlice";
 import { searchByName } from "./managerApi";
-import {
-    fetchManagersByNameStart,
-    fetchManagersByNameSuccess,
-    fetchManagersByNameError
-} from '@redux/reducers/manager/managerNameFilterSlice';
+import { fetchManagersByNameStart, fetchManagersByNameSuccess, fetchManagersByNameError } from '@redux/reducers/manager/managerNameFilterSlice';
 import { HttpError } from '@errors/HttpError';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-interface FilterManagersByNameAction {
-    type: string,
-    payload: string
-}
-
-function* filterManagersByName(action: FilterManagersByNameAction) {
+function* filterManagersByName(action: PayloadAction<string>) {
     try {
         const response: ManagerNameFilter[] = yield call(searchByName, action.payload);
         yield put(fetchManagersByNameSuccess(response));

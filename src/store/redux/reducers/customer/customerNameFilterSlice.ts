@@ -19,7 +19,7 @@ const initialState: CustomerState = {
 };
 
 const customerSlice = createSlice({
-    name: 'customerNameFilter',
+    name: 'customersNameFilter',
     initialState,
     reducers: {
         fetchCustomersByNameStart: (state, action: PayloadAction<string>) => {

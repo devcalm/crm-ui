@@ -8,4 +8,10 @@ export const searchByName = async (name: string): Promise<CustomerNameFilter[]> 
         url: API.CUSTOMER_SEARCH,
         params: { name }
     }).then(result => result.data);
+
+export const fetchNameByGuid = async (id: string): Promise<string> => 
+    await axiosCustomer.request({
+        method: 'get',
+        url: API.CUSTOMER_NAME_FETCH(id),
+    }).then(result => result.data);
     
