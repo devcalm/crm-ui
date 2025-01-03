@@ -25,6 +25,6 @@ const useCustomerNameFilter = (): SelectResponse => {
     );
 
     return { options, handleInputChange, error, loading };
-}
+};
 
 export default useCustomerNameFilter;

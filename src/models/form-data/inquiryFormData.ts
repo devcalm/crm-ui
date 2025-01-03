@@ -8,3 +8,11 @@ export interface InquiryCreateFormData {
     comment?: string;
     note?: string;
 }
+
+export interface InquiryUpdateFormData {
+    productRefId?: Option;
+    customerRefId?: string;
+    managerRefId?: Option;
+    comment?: string;
+    status?: Option
+}

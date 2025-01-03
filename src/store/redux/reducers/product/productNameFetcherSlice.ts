@@ -1,36 +1,35 @@
 import { BackendError } from "@models/dto/BackendError";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CustomerNameState {
+interface ProductNameState {
     loading: boolean,
     name?: string
     error?: BackendError,
 };
 
-const initialState: CustomerNameState = {
+const initialState: ProductNameState = {
     loading: false,
     name: undefined,
     error: undefined,
 };
 
 const slice = createSlice({
-    name: 'customerNameFetcher',
+    name: 'productNameFetcher',
     initialState,
     reducers: {
-        fetchCustomerNameByGuidStart: (state, action: PayloadAction<string>) => {
+        fetchProductNameByGuidStart: (state, action: PayloadAction<string>) => {
             state.loading = true;
         },
-        fetchCustomerNameByGuidSuccess: (state, action: PayloadAction<string>) => {
+        fetchProductNameByGuidSuccess: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
             state.loading = false;
         },
-        fetchCustomerNameByGuidError: (state, action: PayloadAction<BackendError>) => {
+        fetchProductNameByGuidError: (state, action: PayloadAction<BackendError>) => {
             state.loading = false;
-        
             state.error = action.payload;
         }
     }
 });
 
-export const { fetchCustomerNameByGuidStart, fetchCustomerNameByGuidSuccess, fetchCustomerNameByGuidError } = slice.actions;
+export const { fetchProductNameByGuidStart, fetchProductNameByGuidSuccess, fetchProductNameByGuidError } = slice.actions;
 export default slice.reducer;

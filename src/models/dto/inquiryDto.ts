@@ -10,11 +10,19 @@ export interface CreateInquiryDto {
 export interface InquiryDto {
     id: number;
     guid: string;
-    productRefId: string;
-    managerRefId: string;
-    customerRefId: string;
+    product: string;
+    manager: string;
+    customer: string;
     comment?: string;
     note?: string;
     createdAt: string;
     updatedAt: string;
+}
+
+export interface UpdateInquiryDto {
+    id: number,
+    productRefId?: string;
+    managerRefId?: string;
+    comment?: string;
+    status?: string;
 }

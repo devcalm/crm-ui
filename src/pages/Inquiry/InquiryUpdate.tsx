@@ -1,5 +1,5 @@
 import PageContent from "@components/content/PageContent";
-// import InquiryUpdateForm from "./InquiryUpdateForm";
+import InquiryUpdateForm from "./InquiryUpdateForm";
 import { useLoaderData } from "react-router-dom";
 
 export default function InquiryCreate() {
@@ -8,7 +8,7 @@ export default function InquiryCreate() {
 
     return (
         <PageContent title={title}>  
-            {/* <InquiryUpdateForm inquiry={inquiry}/> */}
+            <InquiryUpdateForm inquiry={inquiry}/>
         </PageContent>
     );
 }

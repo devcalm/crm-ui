@@ -25,6 +25,6 @@ const useProductNameFilter = (): SelectResponse => {
     );
 
     return { options, handleInputChange, error, loading };
-}
+};
 
 export default useProductNameFilter;

@@ -25,6 +25,6 @@ const useManagerNameFilter = (): SelectResponse => {
     );
 
     return { options, handleInputChange, error, loading };
-}
+};
 
 export default useManagerNameFilter;

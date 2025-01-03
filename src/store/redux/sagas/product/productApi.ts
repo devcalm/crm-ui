@@ -9,3 +9,10 @@ export const searchByName = async (name: string): Promise<ProductNameFilter[]> =
         params: { name }
     }).then(result => result.data);
 
+
+export const getProductNameByGuid = async (id: string): Promise<string> => 
+    await axiosProduct.request({
+        method: 'get',
+        url: API.PRODUCT_NAME_FETCH(id),
+    }).then(result => result.data);
+    

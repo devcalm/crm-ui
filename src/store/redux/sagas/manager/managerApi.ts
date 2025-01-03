@@ -8,3 +8,9 @@ export const searchByName = async (name: string): Promise<ManagerNameFilter[]> =
         url: API.MANAGER_SEARCH,
         params: { name }
     }).then(result => result.data);
+
+export const getManagerNameByGuid = async (id: string): Promise<string> =>
+    await axiosManager.request({
+        method: 'get',
+        url: API.MANAGER_NAME_FETCH(id),
+    }).then(result => result.data);
