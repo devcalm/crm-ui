@@ -2,7 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import InputGroup from "@ui/forms/groups/input-group/InputGroup";
 import Form from "@ui/forms/form/Form";
 import Button from "@ui/buttons/Button";
-import SelectGroup from "@ui/forms/groups/select-group/SelectGroup";
+import AsyncSelectGroup from "@ui/forms/groups/select-group/AsyncSelectGroup";
 import TextareaGroup from "@ui/forms/groups/textarea-group/TextareaGroup";
 import useProductNameFilter from "@hooks/saga/product/useProductNameFilter";
 import useCustomerNameFilter from "@hooks/saga/customer/useCustomerNameFilter";
@@ -63,7 +63,7 @@ export default function InquiryCreateForm() {
                     required: "Product is required"
                 }}
                 render={({ field, fieldState }) => (
-                    <SelectGroup
+                    <AsyncSelectGroup
                         {...field}
                         useSelectNameFilter={useProductNameFilter}
                         validationState={{
@@ -89,7 +89,7 @@ export default function InquiryCreateForm() {
                     required: "Manager is required"
                 }}
                 render={({ field, fieldState }) => (
-                    <SelectGroup
+                    <AsyncSelectGroup
                         {...field}
                         useSelectNameFilter={useManagerNameFilter}
                         validationState={{
@@ -115,7 +115,7 @@ export default function InquiryCreateForm() {
                     required: "Customer is required"
                 }}
                 render={({ field, fieldState }) => (
-                    <SelectGroup
+                    <AsyncSelectGroup
                         {...field}
                         useSelectNameFilter={useCustomerNameFilter}
                         validationState={{

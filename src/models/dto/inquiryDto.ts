@@ -15,6 +15,7 @@ export interface InquiryDto {
     customer: string;
     comment?: string;
     note?: string;
+    status: string;
     createdAt: string;
     updatedAt: string;
 }

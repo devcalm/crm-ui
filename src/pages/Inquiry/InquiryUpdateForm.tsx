@@ -5,10 +5,10 @@ import useManagerNameFilter from "@hooks/saga/manager/useManagerNameFilter";
 import { InquiryDto } from "@models/dto/inquiryDto";
 import { InquiryUpdateFormData } from "@models/form-data/inquiryFormData";
 import Button from "@ui/buttons/Button";
-import Option from "@ui/forms/groups/select-group/Option";
+import Option, { enumToOptions, selectedOption } from "@ui/forms/groups/select-group/Option";
 import ErrorMessage from "@ui/forms/error-message/ErrorMessage";
 import Form from "@ui/forms/form/Form";
-import SelectGroup from "@ui/forms/groups/select-group/SelectGroup";
+import AsyncSelectGroup from "@ui/forms/groups/select-group/AsyncSelectGroup";
 import { Controller, useForm } from "react-hook-form";
 import useProductInitialName from "@hooks/saga/product/useProductInitialName";
 import { useEffect } from "react";
@@ -16,6 +16,8 @@ import useCustomerInitialName from "@hooks/saga/customer/useCustomerInitialName"
 import useManagerInitialName from "@hooks/saga/manager/useManagerInitialName";
 import ValidationFormError from "@models/form-data/ValidationFormError";
 import InputGroup from "@ui/forms/groups/input-group/InputGroup";
+import BasicSelectGroup from "@ui/forms/groups/select-group/BasicSelectGroup";
+import { InquiryStatus } from "@models/enum/InquiryStatus";
 
 interface UpdateFormProps {
     inquiry: InquiryDto
@@ -32,6 +34,7 @@ export default function UpdateForm({ inquiry }: UpdateFormProps) {
         mode: "onBlur",
     });
 
+    const statuses = enumToOptions(InquiryStatus);
     const { handleSubmit: updateInquiry, error, loading } = useUpdateInquiry(inquiry.id);
     const errorMessage = useBackendErrors<InquiryUpdateFormData>(error, setError);
 
@@ -96,7 +99,7 @@ export default function UpdateForm({ inquiry }: UpdateFormProps) {
                     required: "Product is required"
                 }}
                 render={({ field, fieldState }) => (
-                    <SelectGroup
+                    <AsyncSelectGroup
                         {...field}
                         useSelectNameFilter={useProductNameFilter}
                         validationState={{
@@ -125,7 +128,7 @@ export default function UpdateForm({ inquiry }: UpdateFormProps) {
                     required: "Manager is required"
                 }}
                 render={({ field, fieldState }) => (
-                    <SelectGroup
+                    <AsyncSelectGroup
                         {...field}
                         useSelectNameFilter={useManagerNameFilter}
                         validationState={{
@@ -142,6 +145,35 @@ export default function UpdateForm({ inquiry }: UpdateFormProps) {
                         inputId="managerRefId"
                         label="Manager"
                         placeholder="Select a manager"
+                    />
+                )}
+            />
+
+            <Controller
+                name="status"
+                control={control}
+                defaultValue={selectedOption(inquiry.status, statuses)}
+                rules={{
+                    required: "Status is required"
+                }}
+                render={({ field, fieldState }) => (
+                    <BasicSelectGroup
+                        {...field}
+                        validationState={{
+                            error: fieldState.error?.message,
+                            wasValidating: Boolean(fieldState.error)
+                                || isSubmitted
+                                || fieldState.isDirty
+                                || fieldState.isTouched
+                        }}
+                        onChange={(selectedOption) => {
+                            field.onChange(selectedOption);
+                            field.onBlur();
+                        }}
+                        options={statuses}
+                        inputId="status"
+                        label="Status"
+                        placeholder="Select a status"
                     />
                 )}
             />
