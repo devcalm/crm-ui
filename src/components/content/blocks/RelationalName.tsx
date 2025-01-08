@@ -7,9 +7,9 @@ interface Props {
 }
 
 export default function RelationalName({ loading, name, error }: Props) {
-    // if (loading) {
+    if (loading) {
         return <div className="spinner"></div>;
-    // }
+    }
 
     if (error) {
         return <>Error: {error.message}</>;
