@@ -12,6 +12,13 @@ export async function inquiryLoader({ params }: LoaderFunctionArgs): Promise<Inq
     }).then(response => response.data as InquiryDto);
 }
 
+export async function inquiriesLoader(): Promise<any> {
+    return await axiosInquiry.request({
+        method: 'get',
+        url: API.INQUIRY
+    }).then(response => response.data);
+}
+
 function requireParam<T>(param: T | undefined, paramName: string): T {
     if (param === undefined) {
         throw new Error(`${paramName} is required`);

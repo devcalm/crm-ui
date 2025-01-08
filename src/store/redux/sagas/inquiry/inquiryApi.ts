@@ -12,9 +12,9 @@ export const createInquiry = async (dto: CreateInquiryDto): Promise<number> =>
 
 export const updateInquiry = async (dtoUpdate: UpdateInquiryDto): Promise<void> => {
     const { id, ...dto } = dtoUpdate;
-    return await axiosInquiry.request({
+    await axiosInquiry.request({
         method: 'patch',
         url: API.INQUIRY_VIEW(id),
         data: JSON.stringify(dto)
-    }).then();
+    });
 }

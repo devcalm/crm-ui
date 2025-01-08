@@ -24,6 +24,5 @@ export interface UpdateInquiryDto {
     id: number,
     productRefId?: string;
     managerRefId?: string;
-    comment?: string;
     status?: string;
 }

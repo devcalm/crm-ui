@@ -16,6 +16,5 @@ export function toUpdateInquiryDto(id: number, formData: InquiryUpdateFormData):
         productRefId: formData?.productRefId?.value,
         managerRefId: formData?.managerRefId?.value,
         status: formData?.status?.value,
-        comment: formData.comment
     };
 }
