@@ -16,7 +16,7 @@ const initialState: CustomerState = {
     managers: [],
     loading: false,
     error: undefined
-};
+}
 
 const managerSlice = createSlice({
     name: 'managerNameFilter',

@@ -5,6 +5,7 @@ import { fetchCustomerNameByGuidStart } from "@redux/reducers/customer/customerN
 import ValidationFormError from "@models/form-data/ValidationFormError";
 
 interface CustomerInitialResponse {
+    customerLoading?: boolean,
     customerName?: string,
     customerError?: ValidationFormError
 };
@@ -15,7 +16,7 @@ export default function useCustomerInitialName(guid: string): CustomerInitialRes
     let customerError: ValidationFormError | undefined;
 
     const hasFetched = useRef(false);
-    const { name, error } = useSelector((state: RootState) => state.customerNameFetcherReducer);
+    const { name, loading: customerLoading, error } = useSelector((state: RootState) => state.customerNameFetcherReducer);
 
     if (hasFetched.current) {
         if (name) {
@@ -35,6 +36,6 @@ export default function useCustomerInitialName(guid: string): CustomerInitialRes
         }
     }, [dispatch, guid])
 
-    return { customerName, customerError };
+    return { customerLoading, customerName, customerError };
 };
 

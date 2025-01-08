@@ -5,13 +5,13 @@ interface ProductNameState {
     loading: boolean,
     name?: string
     error?: BackendError,
-};
+}
 
 const initialState: ProductNameState = {
     loading: false,
     name: undefined,
     error: undefined,
-};
+}
 
 const slice = createSlice({
     name: 'productNameFetcher',

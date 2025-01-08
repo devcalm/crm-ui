@@ -12,7 +12,7 @@ const initialState: UpdateInquiryState = {
     loading: false,
     updated: false,
     error: undefined,
-};
+}
 
 const slice = createSlice({
     name: 'updateInquiry',

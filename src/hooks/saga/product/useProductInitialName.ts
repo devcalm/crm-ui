@@ -6,6 +6,7 @@ import Option from "@ui/forms/groups/select-group/Option";
 import ValidationFormError from "@models/form-data/ValidationFormError";
 
 interface ProductInitialResponse {
+    productLoading?: boolean
     productOption?: Option,
     productError?: ValidationFormError
 };
@@ -16,7 +17,7 @@ export default function useProductInitialName(guid: string): ProductInitialRespo
     let productError: ValidationFormError | undefined;
 
     const hasFetched = useRef(false);
-    const { name, error } = useSelector((state: RootState) => state.productNameFetcherReducer);
+    const { name, loading: productLoading, error } = useSelector((state: RootState) => state.productNameFetcherReducer);
 
     if (hasFetched.current) {
         if (name) {
@@ -39,5 +40,5 @@ export default function useProductInitialName(guid: string): ProductInitialRespo
         }
     }, [dispatch, guid])
 
-    return { productOption, productError };
+    return { productLoading, productOption, productError };
 };

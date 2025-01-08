@@ -5,13 +5,13 @@ interface CustomerNameState {
     loading: boolean,
     name?: string
     error?: BackendError,
-};
+}
 
 const initialState: CustomerNameState = {
     loading: false,
     name: undefined,
     error: undefined,
-};
+}
 
 const slice = createSlice({
     name: 'customerNameFetcher',
@@ -26,7 +26,6 @@ const slice = createSlice({
         },
         fetchCustomerNameByGuidError: (state, action: PayloadAction<BackendError>) => {
             state.loading = false;
-        
             state.error = action.payload;
         }
     }

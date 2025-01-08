@@ -5,13 +5,13 @@ interface ManagerNameState {
     loading: boolean,
     name?: string
     error?: BackendError,
-};
+}
 
 const initialState: ManagerNameState = {
     loading: false,
     name: undefined,
     error: undefined,
-};
+}
 
 const slice = createSlice({
     name: 'managerNameFetcher',

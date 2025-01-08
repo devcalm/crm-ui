@@ -16,7 +16,7 @@ const initialState: CustomerState = {
     customers: [],
     loading: false,
     error: undefined
-};
+}
 
 const customerSlice = createSlice({
     name: 'customersNameFilter',

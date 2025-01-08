@@ -6,6 +6,7 @@ import Option from "@ui/forms/groups/select-group/Option";
 import ValidationFormError from "@models/form-data/ValidationFormError";
 
 interface ManagerInitialResponse {
+    managerLoading?: boolean,
     managerOption?: Option,
     managerError?: ValidationFormError
 };
@@ -16,7 +17,7 @@ export default function useManagerInitialName(guid: string): ManagerInitialRespo
     let managerError: ValidationFormError | undefined;
 
     const hasFetched = useRef(false);
-    const { name, error } = useSelector((state: RootState) => state.managerNameFetcherReducer);
+    const { name, loading: managerLoading, error } = useSelector((state: RootState) => state.managerNameFetcherReducer);
 
     if (hasFetched.current) {
         if (name) {
@@ -39,6 +40,6 @@ export default function useManagerInitialName(guid: string): ManagerInitialRespo
         }
     }, [dispatch, guid])
 
-    return { managerOption, managerError };
+    return { managerLoading, managerOption, managerError };
 };
 

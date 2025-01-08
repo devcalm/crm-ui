@@ -12,7 +12,7 @@ const initialState: CreateInquiryState  = {
     loading: false,
     inquiryId: 0,
     error: undefined,
-};
+}
 
 const slice = createSlice({
     name: 'createInquiry',

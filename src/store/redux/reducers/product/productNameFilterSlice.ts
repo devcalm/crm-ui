@@ -16,7 +16,7 @@ const initialState: ProductState = {
     products: [],
     loading: false,
     error: undefined
-};
+}
 
 const productSlice = createSlice({
     name: 'productNameFilter',
