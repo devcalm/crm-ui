@@ -3,13 +3,14 @@ import ROUTES from './routes';
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "@pages/Home/HomePage";
 import RootLayout from "@pages/Root/RootLayout";
-import {Fallback} from "./fallback";
+import { Fallback } from "./fallback";
 import InquiryCreate from "@pages/Inquiry/InquiryCreate";
 import { inquiryLoader, inquiriesLoader } from "./loaders";
+import ProtectedRoute from "./ProtectedRoute";
 
 let Inquires = React.lazy(() => import("@pages/Inquiry/InquiryListing"));
 let InquiryEdit = React.lazy(() => import("@pages/Inquiry/InquiryUpdate"));
-let InquiryView =  React.lazy(() => import("@pages/Inquiry/InquiryViewPage"));
+let InquiryView = React.lazy(() => import("@pages/Inquiry/InquiryViewPage"));
 
 const router = createBrowserRouter([
     {
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
             },
             {
                 path: ROUTES.INQUIRY_CREATE,
-                element: <InquiryCreate />
+                element: (
+                    <ProtectedRoute element={<InquiryCreate />} />
+                ),
             },
             {
                 path: ROUTES.INQUIRY_DETAIL(':id'),

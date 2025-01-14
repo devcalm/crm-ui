@@ -25,6 +25,7 @@ const viteConfig = defineViteConfig({
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@errors': path.resolve(__dirname, 'src/errors'),
       '@models': path.resolve(__dirname, 'src/models'),
+      '@services': path.resolve(__dirname, 'src/services'),
     },
   },
 });
