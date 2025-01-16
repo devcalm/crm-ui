@@ -1,3 +1,3 @@
 export function Fallback() {
-    return <p>Loading...</p>;
+    return <div className="spinner"></div>;
 }

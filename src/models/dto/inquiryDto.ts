@@ -13,6 +13,7 @@ export interface InquiryDto {
     product: string;
     manager: string;
     customer: string;
+    source: string;
     comment?: string;
     note?: string;
     status: string;

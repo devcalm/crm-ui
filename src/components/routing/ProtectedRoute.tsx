@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import KeycloakService from "@services/KeycloakService";
 
-interface ProtectedRouteProps {
-    element: React.ReactNode;
+interface Props {
+    children: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
+export default function ProtectedRoute({ children }: Props) {
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -28,7 +28,5 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
         return <div className="spinner"></div>;
     }
 
-    return isAuthenticated ? <>{element}</> : null;
+    return isAuthenticated ? <>{children}</> : null;
 };
-
-export default ProtectedRoute;

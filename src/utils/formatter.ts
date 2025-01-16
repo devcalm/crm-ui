@@ -13,9 +13,6 @@ export function truncate(str: string, maxLength: number = 20) {
 
 export function formatDateTime(isoDate: string): string {
     const date = new Date(isoDate);
-
-    const pad = (num: number) => String(num).padStart(2, '0');
-
     const year = date.getFullYear();
     const month = pad(date.getMonth() + 1);
     const day = pad(date.getDate());
@@ -24,4 +21,16 @@ export function formatDateTime(isoDate: string): string {
     const seconds = pad(date.getSeconds());
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+export function convertToLocalDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+
+    return `${year}-${month}-${day}`;
+}
+
+function pad(num: number): string {
+    return String(num).padStart(2, '0');
 }

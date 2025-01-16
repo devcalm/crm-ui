@@ -2,7 +2,7 @@ import { InquiryDto } from "@models/dto/inquiryDto";
 import { axiosInquiry } from "@axios/apiClient";
 import API from "@axios/apiRoutes";
 import { LoaderFunctionArgs } from "react-router-dom";
-
+import { ApiResponsePagination } from "@components/listing/ApiResponsePagination";
 
 export async function inquiryLoader({ params }: LoaderFunctionArgs): Promise<InquiryDto> {
     const id = requireParam(params.id, "Inquiry ID");
@@ -12,9 +12,10 @@ export async function inquiryLoader({ params }: LoaderFunctionArgs): Promise<Inq
     }).then(response => response.data as InquiryDto);
 }
 
-export async function inquiriesLoader(): Promise<any> {
+export async function inquiriesLoader({ params }: LoaderFunctionArgs): Promise<ApiResponsePagination<InquiryDto>> {
     return await axiosInquiry.request({
         method: 'get',
+        params: params,
         url: API.INQUIRY
     }).then(response => response.data);
 }

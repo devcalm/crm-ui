@@ -21,12 +21,13 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.INQUIRIES,
                 element: <Inquires />,
+                loader: inquiriesLoader,
                 HydrateFallback: Fallback
             },
             {
                 path: ROUTES.INQUIRY_CREATE,
                 element: (
-                    <ProtectedRoute element={<InquiryCreate />} />
+                    <ProtectedRoute><InquiryCreate /></ProtectedRoute>
                 ),
             },
             {
