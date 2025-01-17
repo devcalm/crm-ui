@@ -7,7 +7,6 @@ import productNameFetcherReducer from "@redux/reducers/product/productNameFetche
 import customerNameFetcherReducer from "@redux/reducers/customer/customerNameFetcherSlice";
 import managerNameFetcherReducer from "@redux/reducers/manager/managerNameFetcherSlice";
 import inquiryCreateReducer from "@redux/reducers/inquiry/inquiryCreateSlice";
-import inquiryLisitingReducer from "@redux/reducers/inquiry/InquiryListingSlice";
 import inquiryUpdateReducer from "@redux/reducers/inquiry/inquiryUpdateSlice";
 import rootSaga from "./sagas";
 
@@ -19,7 +18,6 @@ const store = configureStore({
         customerNameFilterReducer,
         managerNameFilterReducer,
         inquiryCreateReducer,
-        inquiryLisitingReducer,
         inquiryUpdateReducer,
         productNameFetcherReducer,
         customerNameFetcherReducer,
