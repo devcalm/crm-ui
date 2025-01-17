@@ -21,8 +21,6 @@ export type Header =
     | { name: string; type: HeaderType.DROPDOWN; options: Option[] }
     | { name: string; type: HeaderType.ASYNC_DROPDOWN; options: Option[] };
 
-
-
 export interface Value {
     key: string,
     value: string | number | React.ReactNode
@@ -34,9 +32,8 @@ interface ListingProps {
 }
 
 export default function Listing({ headers, values }: ListingProps) {
-
     const [searchParams, setSearchParams] = useSearchParams();
-
+    
     return (
         <table className={cn(css.table, "mt-2")}>
             <thead>
@@ -52,7 +49,6 @@ export default function Listing({ headers, values }: ListingProps) {
                                     />
                                     <div> {snakeToHumanReadable(head.name)}</div>
                                 </div>
-
                             </th>
                         );
                     })}
