@@ -6,6 +6,7 @@ import Input from "@ui/forms/input/Input";
 import "react-datepicker/dist/react-datepicker.css";
 import DateFilter from "@components/listing/filters/DateFilter";
 import formCSS from "@ui/forms/form.module.scss"
+import { useState, useRef } from "react";
 
 interface ListingFilerProps {
     searchParams: URLSearchParams,
@@ -14,12 +15,21 @@ interface ListingFilerProps {
 }
 
 export default function ListingFilter({ head, searchParams, setSearchParams }: ListingFilerProps) {
-    const value = searchParams.get(head.name) || "";
+    const [value, setValue] = useState<string>(searchParams.get(head.name) || "");
+    const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
     const updateQuery = (key: string, value: string): void => {
         const newParams = new URLSearchParams(searchParams.toString());
         value ? newParams.set(key, value) : newParams.delete(key);
-        setSearchParams(newParams);
+        setValue(value);
+
+        if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+        }
+
+        debounceTimer.current = setTimeout(() => {
+            setSearchParams(newParams);
+        }, 300);
     }
 
     switch (head.type) {
